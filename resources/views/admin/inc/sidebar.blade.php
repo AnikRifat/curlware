@@ -65,14 +65,40 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('users') }}" class="menu-link">
+                    <a href="{{ route('admin.users.index') }}" class="menu-link">
                         <div data-i18n="Without menu">All User</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.users.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Add User</div>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+
+        <li class="menu-item" style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Access Management</div>
+            </a>
+
+            <ul class="menu-sub">
+
+                <li class="menu-item">
+                    <a href="{{ route('admin.roles.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Roles</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.permissions.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Permissions</div>
                     </a>
                 </li>
 
             </ul>
         </li>
-
-
     </ul>
 </aside>

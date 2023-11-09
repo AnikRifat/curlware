@@ -30,6 +30,6 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password'),
         ])->assignRole('employee');
 
-        User::factory(10)->create();
+        User::factory(10000)->create();
     }
 }

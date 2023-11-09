@@ -8,52 +8,54 @@
             <div class="card">
                 <div class="card-datatable table-responsive">
                     <div class="container">
-                        <table id="myTable" class="display" style="width:100%">
+                        <table id="myTable" class="table">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
+                                    <!-- Add more columns as needed -->
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011-04-25</td>
-                                    <td>$320,800</td>
-                                </tr>
-
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- Modal to add new record -->
-
         </div>
-
-
     </div>
     @push('js')
         <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
         <script>
-            let table = new DataTable('#myTable');
+            // Initialize DataTable
+            $(document).ready(function() {
+                $('#myTable').DataTable({
+                    order: [],
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('users.datatables') }}", // Add the route to fetch data dynamically
+                    columns: [{
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email'
+                        },
+                        {
+                            data: 'roles',
+                            name: 'roles'
+                        },
+                        // Add more columns as needed
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        }
+                    ]
+                });
+            });
         </script>
     @endpush
 @endsection
