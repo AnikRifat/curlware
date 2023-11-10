@@ -13,7 +13,6 @@ class RoleController extends Controller
 {
     public function index()
     {
-        // dd('ok');
         $roles = Role::all();
 
         return view('admin.pages.roles.index', compact('roles'));

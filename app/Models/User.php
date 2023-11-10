@@ -13,11 +13,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'name',
         'email',
@@ -25,21 +21,13 @@ class User extends Authenticatable
         'role',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -49,6 +37,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->hasOne(Role::class);
+    }
+    public function permissions()
+    {
+        $role = Role::where('name', $this->role)->first();
+        return $role->permissions;
     }
 
     public function hasRole($roles)
@@ -70,20 +63,11 @@ class User extends Authenticatable
 
     public function hasAnyRole(...$roles)
     {
-        //  dd($this->role);
         return $this->hasRole(...$roles);
     }
 
-    public function hasAnyPermission(...$permissions)
-    {
-        // dd(...$permissions);
-        return $this->hasPermission(...$permissions);
-    }
 
-    public function permissions()
-    {
-        $role = Role::where('name', $this->role)->first();
-        return $role->permissions;
-    }
+
+
 
 }

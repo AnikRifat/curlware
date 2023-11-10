@@ -62,8 +62,8 @@ Route::middleware("can:role,'admin','employee'")->group(function () {
 
     // Products
     Route::get('products', [ProductController::class, 'index'])->name('admin.products.index')->middleware("can:permission,'show product'");
-    Route::get('products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware("can:permission,'create  product'");
-    Route::post('products', [ProductController::class, 'store'])->name('admin.products.store')->middleware("can:permission,'create  product'");
+    Route::get('products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware("can:permission,'create product'");
+    Route::post('products', [ProductController::class, 'store'])->name('admin.products.store')->middleware("can:permission,'create product'");
     Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit')->middleware("can:permission,'update product'");
     Route::put('products/{product}', [ProductController::class, 'update'])->name('admin.products.update')->middleware("can:permission,'update product'");
     Route::get('delete/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy')->middleware("can:permission,'delete product'");

@@ -10,6 +10,9 @@
             <div class="card">
                 <div class="card-datatable table-responsive">
                     <div class="container">
+                        @can('permission', ['create product'])
+                        <a class="btn btn-primary" href="{{ route('admin.products.create') }}">Create Product</a>
+                    @endcan
                         <table id="myTable" class="table">
                             <thead>
                                 <tr>

@@ -36,12 +36,12 @@ class DataTableController extends Controller
                 if (auth()->user()->can('permission', ['update product'])) {
                     $edit = '<a href="' . route('admin.products.edit', $product->id) . '" class="btn btn-primary">Edit</a>';
                 } else {
-                    $edit = '<a disabled class=" btn btn-secondary">Edit</a>';
+                    $edit = '<a disabled class=" btn btn-secondary">Unable to Edit</a>';
                 }
                 if (auth()->user()->can('permission', ['delete product'])) {
                     $delete = '<a href="' . route('admin.products.destroy', $product->id) . '" class="btn btn-danger">Delete</a>';
                 } else {
-                    $delete = '<a disabled class=" btn btn-secondary">Delete</a>';
+                    $delete = '<a disabled class=" btn btn-secondary">Ubanle to Delete</a>';
                 }
                 $action = $edit . $delete;
                 return $action;

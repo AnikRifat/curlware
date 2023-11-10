@@ -32,18 +32,14 @@ class AuthServiceProvider extends ServiceProvider
                 }
             }
         );
-        // Gate::before(function (User $user, $ability) {
-        //     if ($user->hasRole('admin')) {
-        //         return true;
-        //     }
-        // });
+
 
         Gate::define('role', function (User $user, ...$roles) {
             return $user->hasAnyRole($roles);
         });
 
         Gate::define('permission', function (User $user, ...$permissions) {
-            return $user->hasAnyPermission($permissions);
+            return $user->hasPermission($permissions);
         });
 
     }

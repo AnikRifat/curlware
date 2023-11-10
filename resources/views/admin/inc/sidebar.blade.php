@@ -121,7 +121,7 @@
                     @endcan
                     @can('permission', ['create product'])
                         <li class="menu-item">
-                            <a href="{{ route('admin.products.index') }}" class="menu-link">
+                            <a href="{{ route('admin.products.create') }}" class="menu-link">
                                 <div data-i18n="Without menu">Add Product</div>
                             </a>
                         </li>
