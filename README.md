@@ -7,7 +7,7 @@ employee: employee@example.com | password: password
 ## Installation
 
 ```
-git clone https://github.com/AnikRifat/curlware
+git clone https://github.com/AnikRifat/curlware.git
 cd blog
 composer install
 cp .env.example .env
