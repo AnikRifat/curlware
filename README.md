@@ -7,7 +7,7 @@ employee: employee@example.com | password: password
 ## Installation
 
 ```
-git clone https://github.com/milon/laravel-blog.git
+git clone https://github.com/AnikRifat/curlware
 cd blog
 composer install
 cp .env.example .env
