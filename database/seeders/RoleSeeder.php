@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -12,15 +12,9 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminRole = Role::create(['name' => 'admin']);
-        $managerRole = Role::create(['name' => 'manager']);
-        $employeeRole = Role::create(['name' => 'employee']);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'manager']);
+        Role::create(['name' => 'employee']);
 
-        // Permissions
-
-
-        // Assign permissions to roles
-        $adminRole->givePermissionTo('edit users', 'delete users');
-        $managerRole->givePermissionTo('edit users');
     }
 }

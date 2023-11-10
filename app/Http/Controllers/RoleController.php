@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rule;
+
 
 class RoleController extends Controller
 {
@@ -26,7 +28,11 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:roles|max:255',
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('roles', 'name')->whereNull('deleted_at'),
+            ],
             'permissions' => 'array',
         ]);
 
@@ -48,7 +54,11 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name' => 'required|max:255|unique:roles,name,' . $role->id,
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('roles', 'name')->ignore($role->id)->whereNull('deleted_at'),
+            ],
             'permissions' => 'array',
         ]);
 

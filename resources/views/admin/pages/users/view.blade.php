@@ -27,6 +27,17 @@
                                 class="form-control">
                         </div>
 
+                        <div class="form-group">
+                            <label for="roles">Roles:</label>
+                            <select name="role" class="form-control">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->name }}" {{ $user->role && $role->name ? 'selected' : '' }}>
+                                        {{ $role->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- Add more fields as needed -->
 
                         <button type="submit" class="btn btn-primary">{{ $user ? 'Update User' : 'Create User' }}</button>

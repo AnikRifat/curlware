@@ -21,6 +21,8 @@
                                     <td>{{ implode(', ', $role->permissions->pluck('name')->toArray()) }}</td>
                                     <td>
                                         <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.roles.destroy', $role->id) }}"
+                                            class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

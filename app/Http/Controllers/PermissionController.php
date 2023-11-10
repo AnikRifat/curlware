@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Validation\Rule;
 
 class PermissionController extends Controller
 {
@@ -22,7 +23,11 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:permissions|max:255',
+            'name' => [
+                'required',
+                Rule::unique('permissions', 'name')->whereNull('deleted_at'),
+                'max:255',
+            ],
         ]);
 
         Permission::create(['name' => $request->name]);
@@ -38,7 +43,11 @@ class PermissionController extends Controller
     public function update(Request $request, Permission $permission)
     {
         $request->validate([
-            'name' => 'required|max:255|unique:permissions,name,' . $permission->id,
+            'name' => [
+                'required',
+                'max:255',
+                Rule::unique('permissions', 'name')->ignore($permission->id)->whereNull('deleted_at'),
+            ],
         ]);
 
         $permission->update(['name' => $request->name]);

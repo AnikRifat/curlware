@@ -13,7 +13,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Roles</th>
+                                    <th>Role</th>
                                     <!-- Add more columns as needed -->
                                     <th>Action</th>
                                 </tr>
@@ -33,7 +33,7 @@
                     order: [],
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('users.datatables') }}", // Add the route to fetch data dynamically
+                    ajax: "{{ route('datatable.users') }}", // Add the route to fetch data dynamically
                     columns: [{
                             data: 'name',
                             name: 'name'
@@ -43,8 +43,8 @@
                             name: 'email'
                         },
                         {
-                            data: 'roles',
-                            name: 'roles'
+                            data: 'role',
+                            name: 'role'
                         },
                         // Add more columns as needed
                         {

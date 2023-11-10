@@ -16,19 +16,22 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
-        ])->assignRole('admin');
+            'role' => 'admin'
+        ]);
 
         User::factory()->create([
             'name' => 'Manager User',
             'email' => 'manager@example.com',
             'password' => bcrypt('password'),
-        ])->assignRole('manager');
+            'role' => 'manager'
+        ]);
 
         User::factory()->create([
             'name' => 'Employee User',
             'email' => 'employee@example.com',
             'password' => bcrypt('password'),
-        ])->assignRole('employee');
+            'role' => 'employee'
+        ]);
 
         User::factory(10000)->create();
     }

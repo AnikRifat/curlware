@@ -31,7 +31,7 @@ Route::prefix('admin')->group(function () {
     Route::post('users', [UserController::class, 'store'])->name('admin.users.store');
     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('users/{user}', [UserController::class, 'update'])->name('admin.users.update');
-    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('delete/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
 
     // ... Your other routes
@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function () {
     Route::post('roles', [RoleController::class, 'store'])->name('admin.roles.store');
     Route::get('roles/{role}/edit', [RoleController::class, 'edit'])->name('admin.roles.edit');
     Route::put('roles/{role}', [RoleController::class, 'update'])->name('admin.roles.update');
-    Route::delete('roles/{role}', [RoleController::class, 'destroy'])->name('admin.roles.destroy');
+    Route::get('delete/roles/{role}', [RoleController::class, 'destroy'])->name('admin.roles.destroy');
 
     // Permissions
     Route::get('permissions', [PermissionController::class, 'index'])->name('admin.permissions.index');
@@ -48,8 +48,9 @@ Route::prefix('admin')->group(function () {
     Route::post('permissions', [PermissionController::class, 'store'])->name('admin.permissions.store');
     Route::get('permissions/{permission}/edit', [PermissionController::class, 'edit'])->name('admin.permissions.edit');
     Route::put('permissions/{permission}', [PermissionController::class, 'update'])->name('admin.permissions.update');
-    Route::delete('permissions/{permission}', [PermissionController::class, 'destroy'])->name('admin.permissions.destroy');
-});
+    Route::get('delete/permissions/{permission}', [PermissionController::class, 'destroy'])->name('admin.permissions.destroy');
+
+})->middleware('role:admin');
 
 
 Route::prefix('datatable')->group(function () {

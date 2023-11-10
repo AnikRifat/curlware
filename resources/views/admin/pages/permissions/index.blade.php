@@ -20,6 +20,8 @@
                                     <td>
                                         <a href="{{ route('admin.permissions.edit', $permission->id) }}"
                                             class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.permissions.destroy', $permission->id) }}"
+                                            class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
