@@ -33,6 +33,6 @@ class UsersTableSeeder extends Seeder
             'role' => 'employee'
         ]);
 
-        User::factory(10000)->create();
+        User::factory(10)->create();
     }
 }

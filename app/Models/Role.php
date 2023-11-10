@@ -37,6 +37,9 @@ class Role extends Model
             $role->permissions()->detach();
         });
     }
-
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
 }

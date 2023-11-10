@@ -25,7 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Roles based authorization
         Gate::before(
             function ($user, $ability) {
                 if ($user->role === 'admin') {
@@ -33,25 +32,20 @@ class AuthServiceProvider extends ServiceProvider
                 }
             }
         );
+        // Gate::before(function (User $user, $ability) {
+        //     if ($user->hasRole('admin')) {
+        //         return true;
+        //     }
+        // });
 
-        foreach (self::$permissions as $action => $roles) {
-            Gate::define(
-                $action,
-                function (User $user) use ($roles) {
-                    if (in_array($user->role, $roles)) {
-                        return true;
-                    }
-                }
-            );
-        }
+        Gate::define('role', function (User $user, ...$roles) {
+            return $user->hasAnyRole($roles);
+        });
+
+        Gate::define('permission', function (User $user, ...$permissions) {
+            return $user->hasAnyPermission($permissions);
+        });
+
     }
-    public static $permissions = [
-        'add-product' => ['manager', 'employee'],
-        'show-product' => ['manager', 'employee'],
-        'create-product' => ['manager'],
-        'store-product' => ['manager'],
-        'edit-product' => ['manager'],
-        'update-product' => ['manager'],
-        'destroy-product' => ['manager'],
-    ];
+
 }
