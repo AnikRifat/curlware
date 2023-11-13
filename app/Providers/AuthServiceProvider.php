@@ -33,7 +33,6 @@ class AuthServiceProvider extends ServiceProvider
             }
         );
 
-
         Gate::define('role', function (User $user, ...$roles) {
             return $user->hasAnyRole($roles);
         });
@@ -43,5 +42,4 @@ class AuthServiceProvider extends ServiceProvider
         });
 
     }
-
 }

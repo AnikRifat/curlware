@@ -9,22 +9,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Role extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name'];
 
+    protected $fillable = ['name'];
 
     public function permissions()
     {
         return $this->belongsToMany(Permission::class, 'role_has_permission', 'role_id', 'permission_id');
     }
+
     public function hasPermissionTo($id)
     {
         $permission = Permission::find($id);
+
         return $this->permissions->contains($permission);
     }
+
     public function givePermissionTo($permissions)
     {
         $this->permissions()->syncWithoutDetaching($permissions);
     }
+
     public function syncPermissions(array $permissions)
     {
         $this->permissions()->sync($permissions);
@@ -43,5 +47,4 @@ class Role extends Model
             $role->permissions()->detach();
         });
     }
-
 }

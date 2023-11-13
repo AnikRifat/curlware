@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-
 
 class RoleController extends Controller
 {
@@ -21,6 +19,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all();
+
         return view('admin.pages.roles.view', compact('permissions'));
     }
 
@@ -47,6 +46,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $permissions = Permission::all();
+
         return view('admin.pages.roles.view', compact('role', 'permissions'));
     }
 

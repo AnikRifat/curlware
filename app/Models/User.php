@@ -13,7 +13,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-
     protected $fillable = [
         'name',
         'email',
@@ -21,33 +20,32 @@ class User extends Authenticatable
         'role',
     ];
 
-
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
 
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 
-
     public function role()
     {
         return $this->hasOne(Role::class);
     }
+
     public function permissions()
     {
         $role = Role::where('name', $this->role)->first();
+
         return $role->permissions;
     }
 
     public function hasRole($roles)
     {
 
-        if (count(array_intersect($roles, array($this->role))) > 0) {
+        if (count(array_intersect($roles, [$this->role])) > 0) {
             return true;
         }
 
@@ -65,9 +63,4 @@ class User extends Authenticatable
     {
         return $this->hasRole(...$roles);
     }
-
-
-
-
-
 }

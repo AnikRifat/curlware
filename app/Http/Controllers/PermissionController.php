@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -12,6 +11,7 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::all();
+
         return view('admin.pages.permissions.index', compact('permissions'));
     }
 

@@ -1,7 +1,9 @@
 ## Demo login info
 
 admin: admin@example.com | password: password
+
 manager: manager@example.com | password: password
+
 employee: employee@example.com | password: password
 
 ## Installation

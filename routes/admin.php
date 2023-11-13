@@ -7,19 +7,6 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
-
 Route::middleware("can:role,'admin'")->group(function () {
 
     //user
@@ -37,7 +24,6 @@ Route::middleware("can:role,'admin'")->group(function () {
     Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
     Route::put('products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
     Route::get('delete/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-
 
     // Roles
     Route::get('roles', [RoleController::class, 'index'])->name('admin.roles.index');
@@ -59,7 +45,6 @@ Route::middleware("can:role,'admin'")->group(function () {
 
 Route::middleware("can:role,'admin','employee'")->group(function () {
 
-
     // Products
     Route::get('products', [ProductController::class, 'index'])->name('admin.products.index')->middleware("can:permission,'show product'");
     Route::get('products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware("can:permission,'create product'");
@@ -68,18 +53,11 @@ Route::middleware("can:role,'admin','employee'")->group(function () {
     Route::put('products/{product}', [ProductController::class, 'update'])->name('admin.products.update')->middleware("can:permission,'update product'");
     Route::get('delete/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy')->middleware("can:permission,'delete product'");
 
-
-
-
 });
-
 
 Route::prefix('datatable')->group(function () {
 
     Route::get('users', [DataTableController::class, 'users'])->name('datatable.users')->middleware("can:permission,'view user'");
     Route::get('products', [DataTableController::class, 'products'])->name('datatable.products')->middleware("can:permission,'show product'");
 
-
 });
-
-

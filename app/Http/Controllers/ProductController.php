@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -16,12 +15,14 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('admin.pages.products.index', compact('products'));
     }
 
     public function create()
     {
         $product = false;
+
         return view('admin.pages.products.view', compact('product'));
     }
 
@@ -87,8 +88,8 @@ class ProductController extends Controller
 
     public function storeProductImage(UploadedFile $image, $folder = 'products')
     {
-        $fileName = Str::uuid() . '.' . $image->getClientOriginalExtension();
-        $filePath = $folder . '/' . $fileName;
+        $fileName = Str::uuid().'.'.$image->getClientOriginalExtension();
+        $filePath = $folder.'/'.$fileName;
 
         Storage::disk('public')->put($filePath, file_get_contents($image));
 

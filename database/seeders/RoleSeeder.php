@@ -12,9 +12,9 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'manager']);
-        Role::create(['name' => 'employee']);
+        Role::create(['name' => 'admin'])->givePermissionTo([1, 2, 3, 4]);
+        Role::create(['name' => 'manager'])->givePermissionTo([1, 2, 3]);
+        Role::create(['name' => 'employee'])->givePermissionTo([2]);
 
     }
 }

@@ -7,6 +7,8 @@
         <div class="col-lg-12 order-0">
             <div class="card">
                 <div class="card-datatable table-responsive">
+                    <a class="btn btn-primary" href="{{ route('admin.users.create') }}">Create User</a>
+
                     <div class="container">
                         <table id="myTable" class="table">
                             <thead>
