@@ -14,21 +14,24 @@ class UsersTableSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@gmail.com',
+            'phone' => 01643675060,
             'password' => bcrypt('password'),
             'role' => 'admin',
         ]);
 
         User::factory()->create([
             'name' => 'Manager User',
-            'email' => 'manager@example.com',
+            'email' => 'manager@gmail.com',
+            'phone' => 01643675061,
             'password' => bcrypt('password'),
             'role' => 'manager',
         ]);
 
         User::factory()->create([
             'name' => 'Employee User',
-            'email' => 'employee@example.com',
+            'email' => 'employee@gmail.com',
+            'phone' => 01643675062,
             'password' => bcrypt('password'),
             'role' => 'employee',
         ]);

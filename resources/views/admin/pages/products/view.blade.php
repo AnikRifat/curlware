@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-            
+
                     <h4 class="card-title">{{ $product ? 'Edit Product' : 'Create Product' }}</h4>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <label for="image">Product Image:</label>
                             <input type="file" name="image" class="dropify"
-                                data-default-file="{{ $product ? asset('path/to/your/default/image.jpg') : '' }}">
+                                data-default-file="{{ $product ? asset('storage/app/public/' . $product->image) : '' }}">
                         </div>
 
                         <!-- Add more fields as needed -->

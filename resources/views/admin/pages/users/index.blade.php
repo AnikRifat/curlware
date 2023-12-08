@@ -15,6 +15,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
                                     <th>Role</th>
                                     <!-- Add more columns as needed -->
                                     <th>Action</th>
@@ -43,6 +44,10 @@
                         {
                             data: 'email',
                             name: 'email'
+                        },
+                        {
+                            data: 'phone',
+                            name: 'phone'
                         },
                         {
                             data: 'role',
