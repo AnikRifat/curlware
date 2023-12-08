@@ -27,6 +27,11 @@
                                 class="form-control">
                         </div>
                         <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="phone" name="phone" value="{{ isset($user) ? $user->phone : old('phone') }}"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label for="password">
                                 @if (isset($user))
                                     update Password
